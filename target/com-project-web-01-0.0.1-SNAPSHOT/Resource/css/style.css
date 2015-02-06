@@ -1,0 +1,41 @@
+#body-bg{font-family:"微软雅黑";width:100%;min-width:1200px;height:1150px;position:absolute;left:0;top:0;z-index:-999;}
+#header{width:100%;min-width:1200px;background:url('../images/header.bg.png') repeat-x left top;}
+.nav{width:1200px;height:80px;margin:0 auto;}
+.nav dt{float:left;width:160px;height:60px;background:url('../images/header.nav.dt.png') no-repeat left top;}
+.nav dd{float:right;color:#FFF;font-size:18px;line-height:80px;}
+.nav dd a{color:#FFF;}
+dd.hot{color:#ffd201;}
+.logo{width:1200px;height:360px;margin:0 auto;background:url('../images/logo.png') no-repeat left top;}
+.signup{display:block;width:97px;height:144px;background:url('../images/signup.png') no-repeat left top;float:right;margin-top:75px;margin-right:75px;clear:both;cursor:pointer;}
+.header-center{width:1200px;height:auto;margin:0 auto;}
+.memo{width:406px;height:208px;background:url('../images/header.memo.png') no-repeat left top;float:left;margin-top:110px;}
+.person-list{width:350px;height:520px;float:right;margin-top:-100px;}
+.person-list li{background:url('../images/header.person.bg.png') repeat left top;margin-bottom:2px;color:#FFF;padding:10px;position:relative;}
+.person-list img{width:65px;height:65px;border-radius:10px;float:left;}
+.person-list p,.person-list span{color:#FFF;}
+.person-list .name{font-size:16px;padding-top:10px;text-indent:10px;}
+.person-list .address{font-size:18px;padding-top:10px;text-indent:10px;}
+.person-list .intro{clear:both;font-style:italic;padding-top:10px;line-height:24px;}
+.person-list .time{position:absolute;right:10px;top:10px;}
+.person-more{text-align:right;}
+.article{clear:both;}
+.article{padding-top:60px;}
+.article h2{font-size:24px;color:#000;text-align:center;}
+.article p{font-size:18px;color:#000;width:846px;height:auto;line-height:30px;margin:20px auto;}
+.video-list{width:1200px;height:340px;margin:0 auto;padding-top:20px;}
+.video-list li{float:left;cursor:pointer;}
+.video-list li img{width:374px;height:244px;}
+.video-list li p{line-height:30px;}
+.video-list li.video-list-b{padding:0 39px;}
+.video-list li.video-more{clear:both;float:right;}
+#footer{clear:both;width:100%;height:140px;background:#4c4b4b;}
+.footer-center{width:1200px;height:auto;margin:0 auto;padding-top:16px;}
+.wechat{width:250px;float:left;}
+.wechat img{width:106px;height:106px;float:left;}
+.wechat p{font-size:20px;line-height:53px;color:#FFF;text-indent:20px;}
+.rego{float:left;width:180px;font-size:25px;color:#9c9c9c;padding-top:50px;text-indent:50px;}
+.copyright{float:left;width:770px;color:#9c9c9c;line-height:30px;font-size:14px;padding-top:10px;}
+.copyright p{text-indent:50px;}
+
+.iwantsignup{position:relative;}
+.qrcode{position:absolute;left:-100px;top:70px;z-index:9999;display:none;}

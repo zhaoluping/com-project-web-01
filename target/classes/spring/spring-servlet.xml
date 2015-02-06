@@ -1,0 +1,59 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      ">
+	<context:property-placeholder location="classpath:config.properties" />
+	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射 -->
+	<mvc:annotation-driven>
+		<!-- 在controller方法里面注入可判断设备的参数，需要在controller方法声明接口参数 -->
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver" />
+			<bean
+				class="org.springframework.mobile.device.site.SitePreferenceWebArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	<!-- 设备检测拦截器 -->
+	<mvc:interceptors>
+		<!-- On pre-handle, resolve the device that originated the web request -->
+		<bean
+			class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+		<!-- On pre-handle, manage the user's site preference (declare after DeviceResolverHandlerInterceptor) -->
+		<bean
+			class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor" />
+	</mvc:interceptors>
+	<!-- 对模型视图名称的解析，在请求时模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.mobile.device.view.LiteDeviceDelegatingViewResolver">
+		<constructor-arg>
+			<bean
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<property name="prefix" value="/View/jsp/" />
+				<property name="suffix" value=".jsp" />
+			</bean>
+		</constructor-arg>
+		<property name="enableFallback" value="true" />
+		<!-- 手机视图 -->
+		<property name="mobilePrefix" value="mobile/" />
+		<!-- 平板视图 -->
+		<property name="tabletPrefix" value="normal/" />
+		<!-- 其他视图 -->
+		<property name="normalPrefix" value="normal/" />
+	</bean>
+	<!-- 扫描包含注解的Bean -->
+	<context:component-scan base-package="com.project.web.controller"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!-- 文件上传配置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+	<!-- 访问静态资源 -->
+	<mvc:resources mapping="/Resource/**" location="/Resource/" />
+</beans>
